@@ -1,0 +1,21 @@
+[package]
+name = "multi_vest_dao"
+version = "0.0.0"
+authors = ["you"]
+edition = "2021"
+publish = false
+
+[lib]
+path = "src/multi_vest_dao.rs"
+[dependencies.multiversx-sc]
+version = "0.43.4"
+[dependencies.multiversx-sc-modules]
+version = "0.43.4"
+[dev-dependencies]
+num-bigint = "0.4.2"
+
+[dev-dependencies.multiversx-sc-scenario]
+version = "0.43.4"
+
+[workspace]
+members = [".", "meta"]
