@@ -1,0 +1,113 @@
+{
+    "name": "dao deployment test",
+    "gasSchedule": "v3",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "0",
+                    "balance": "1,000,000"
+                },
+                "address:user1": {
+                    "nonce": "0",
+                    "balance": "1,000,000"
+                },
+                "address:user2": {
+                    "nonce": "0",
+                   "balance": "1,000,000"
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:owner",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:multi_vest_dao_contract"
+                }
+            ]
+        },
+        {
+            "step": "scDeploy",
+            "id": "deploy",
+            "tx": {
+                "from": "address:owner",
+                "contractCode": "file:../output/multi_vest_dao.wasm",
+                "arguments": [
+                    "1000"
+                ],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "1",
+                    "balance": "1,000,000"
+                },
+                "address:user1": {
+                    "nonce": "0",
+                    "balance": "1,000,000"
+                },
+                "address:user2": {
+                    "nonce": "0",
+                   "balance": "1,000,000"
+                }
+            }
+        },
+        {
+            "step": "setState",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "0",
+                    "balance": "1,000,000"
+                },
+                "address:user1": {
+                    "nonce": "0",
+                     "balance": "1,000,000"
+                },
+                "address:user2": {
+                    "nonce": "0",
+                    "balance": "1,000,000"
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:owner",
+                    "creatorNonce": "0",
+                    "newAddress": "sc:multi_vest_dao_contract"
+                }
+            ]
+        },
+        {
+            "step": "setState",
+            "accounts": {
+                  "sc:multi_vest_dao_contract": {
+                     "nonce": "0",
+                    "balance": "0",
+                    "storage": {
+                        "str:setupPeriodStatus": "0"
+                    },
+                    "code": "file:../output/multi_vest_dao.wasm",
+                    "owner": "address:owner"
+                }
+             
+                  
+                }
+            
+        },
+        {
+            "step": "setState",
+            "currentBlockInfo": {
+                "blockTimestamp": "1"
+            }
+        }
+    ]
+}

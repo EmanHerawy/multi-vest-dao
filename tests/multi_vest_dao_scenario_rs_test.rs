@@ -9,6 +9,22 @@ fn world() -> ScenarioWorld {
 }
 
 #[test]
-fn empty_rs() {
+fn multi_vest_dao_rs() {
     world().run("scenarios/multi_vest_dao.scen.json");
+}
+
+#[test]
+fn test_add_proposal_rs() {
+    world().run("scenarios/test-add-proposal.scen.json");
+}
+
+#[test]
+fn test_add_stake_rs() {
+    world().run("scenarios/test-add-stake.scen.json");
+}
+
+// #[test]
+#[test]
+fn test_init_rs() {
+    world().run("scenarios/test-init.scen.json");
 }

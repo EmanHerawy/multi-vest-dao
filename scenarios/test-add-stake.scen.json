@@ -1,0 +1,46 @@
+{
+    "name": "token deposit  test",
+    "gasSchedule": "v3",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "test-init.scen.json"
+        },
+        {
+            "step": "scCall",
+            "id": "add-deposit",
+             "tx": {
+                "from": "address:owner",
+                "to": "sc:multi_vest_dao_contract",
+                "egldValue": "1000",
+                "function": "stake",
+                "arguments": [],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        } ,  {
+            "step": "checkState",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "1",
+                    "balance": "999000"
+                },
+                "address:user1": {
+                    "nonce": "0",
+                    "balance": "1,000,000"
+                },
+                "address:user2": {
+                    "nonce": "0",
+                   "balance": "1,000,000"
+                }
+            }
+        }
+        
+    ]
+}

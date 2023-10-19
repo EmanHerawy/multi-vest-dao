@@ -1,0 +1,29 @@
+{
+    "name": "token deposit add proposal test",
+    "gasSchedule": "v3",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "test-add-stake.scen.json"
+        },
+        
+        {
+            "step": "scCall",
+            "id": "add-proposal",
+             "tx": {
+                "from": "address:owner",
+                "to": "sc:multi_vest_dao_contract",
+                "function": "propose",
+                "arguments": ["10", "20","10"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

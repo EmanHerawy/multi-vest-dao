@@ -8,7 +8,10 @@ multiversx_sc::derive_imports!();
 #[multiversx_sc::contract]
 pub trait MultiVestDao: pause::PauseModule{
     #[init]
-    fn init(&self) {}
+    fn init(&self, minimum_stake_value:BigUint  ) {
+        // Set the minimum stake value
+        self.minimum_stake().set(minimum_stake_value);
+    }
 
    #[endpoint]
  
