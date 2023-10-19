@@ -44,3 +44,7 @@ Follow these instructions to get a copy of the project up and running on your lo
    #deploy the pallet to devnet 
    mxpy --verbose contract deploy  --bytecode  <your contract wasm file path>  --pem <path to your pem>  --recall-nonce  --gas-limit 60000000  --arguments <set the staking minimum>   --chain D  --proxy https://devnet-api.multiversx.com  --outfile deploy-devnet.interaction.json  --send
     ```
+
+    ## Front-end
+    **under development**
+![Alt text](<Screenshot from 2023-10-19 22-12-01.png>)
