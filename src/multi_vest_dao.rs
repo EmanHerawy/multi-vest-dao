@@ -173,7 +173,7 @@ pub enum ProposalStatus {
 }
 
 #[derive(NestedEncode, NestedDecode, TopEncode, TopDecode, TypeAbi)]
-struct Proposal<M: ManagedTypeApi>{
+pub struct Proposal<M: ManagedTypeApi>{
 // pub index: u64,
 pub proposal_title: ManagedBuffer<M>,
 // the proposal details will be stored off chain, we need to get the fingerprint of the proposal details

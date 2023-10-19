@@ -1,0 +1,229 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.71.0-nightly",
+            "commitHash": "a2b1646c597329d0a25efa3889b66650f65de1de",
+            "commitDate": "2023-05-25",
+            "channel": "Nightly",
+            "short": "rustc 1.71.0-nightly (a2b1646c5 2023-05-25)"
+        },
+        "contractCrate": {
+            "name": "multi_vest_dao",
+            "version": "0.0.0"
+        },
+        "framework": {
+            "name": "multiversx-sc",
+            "version": "0.43.4"
+        }
+    },
+    "docs": [
+        "A DAO to fund promising projects at multiversx ecosystem"
+    ],
+    "name": "MultiVestDao",
+    "constructor": {
+        "inputs": [],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "vote",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "proposal_id",
+                    "type": "u64"
+                },
+                {
+                    "name": "vote",
+                    "type": "bool"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "execute",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "proposal_id",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "propose",
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "proposal_title",
+                    "type": "bytes"
+                },
+                {
+                    "name": "proposal_off_chain_link",
+                    "type": "bytes"
+                },
+                {
+                    "name": "requested_amount",
+                    "type": "BigUint"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "stake",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "EGLD"
+            ],
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "lockedTokens",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "minimumStake",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "totalProposals",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "ProposalDetails",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "index",
+                    "type": "u64"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "Proposal"
+                }
+            ]
+        },
+        {
+            "name": "totalMembers",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "docs": [
+                "total tokens locked as DAO treasury"
+            ],
+            "name": "treasuryBalance",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "pause",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "unpause",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "isPaused",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "bool"
+                }
+            ]
+        }
+    ],
+    "events": [],
+    "hasCallback": false,
+    "types": {
+        "Proposal": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "proposal_title",
+                    "type": "bytes"
+                },
+                {
+                    "name": "proposal_off_chain_link",
+                    "type": "bytes"
+                },
+                {
+                    "name": "requested_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "proposer",
+                    "type": "Address"
+                },
+                {
+                    "name": "yes_vote_count",
+                    "type": "u64"
+                },
+                {
+                    "name": "no_vote_count",
+                    "type": "u64"
+                },
+                {
+                    "name": "total_votes_count",
+                    "type": "u64"
+                },
+                {
+                    "name": "proposal_deadline",
+                    "type": "u64"
+                },
+                {
+                    "name": "voters",
+                    "type": "List<Address>"
+                },
+                {
+                    "name": "is_excuted",
+                    "type": "bool"
+                }
+            ]
+        }
+    }
+}
